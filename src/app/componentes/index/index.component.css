@@ -1,0 +1,126 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 3.5rem;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid lightgray;
+
+    & .titulo {
+        width: 40%;
+        font: bold 1.75rem 'Roboto';
+        padding: .5rem 0rem .5rem 1rem;
+    }
+
+    & .informacoes {
+        width: 60%;
+        text-align: right;
+        font: normal .9rem 'Calibri';
+
+        & .entidade {
+            display: inline-block;
+            padding-top: .5rem;
+            font: bold 1.2rem 'Calibri';
+        }
+
+        & button {
+            float: right;
+            margin: .5rem;
+            height: 2.5rem;
+
+            font: normal 1rem 'Calibri';
+            transition: .2s;
+
+            background: linear-gradient(to top, lightgray, white);
+            border: 1px solid gray;
+            border-radius: 3px;
+        }
+
+        & button:hover {
+            cursor: pointer;
+            filter: brightness(.9);
+        }
+
+        & img {
+            width: 1.25rem;
+            margin-bottom: -.25rem;
+        }
+
+    }
+}
+
+nav {
+    width: 100%;
+    background: linear-gradient(to top, lightgray, white);
+
+    & button {
+        width: 8rem;
+        height: 1.5rem;
+
+        background-color: transparent;
+        transition: .2s;
+
+        border: none;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    & button:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.listDown {
+    position: absolute;
+    display: none;
+    width: 10rem;
+    
+    background-color: cornsilk;
+    overflow: hidden;
+
+    animation-name: listDown;
+    animation-duration: .4s;
+
+    & a {
+        display: block;
+        width: 95%;
+
+        font: normal .9rem 'Calibri';
+        text-decoration: none;
+        color: black;
+        transition: .2s;
+
+        border-bottom: 1px solid gray;
+        padding: .25rem 0rem .25rem .5rem;
+    }
+
+    & a:hover {
+        background-color: cornflowerblue;
+        color: white;
+    }
+}
+
+
+
+@keyframes listDown {
+
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 15rem;
+    }
+}
+
+.remove {
+    animation-name: listUp;
+    animation-duration: .4s;
+}
+
+@keyframes listUp {
+    
+    from { max-height: 15rem; }
+    to { max-height: 0rem; }
+}

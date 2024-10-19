@@ -12,7 +12,9 @@ header {
     }
 
     & .informacoes {
-        font: normal 1rem 'Calibri';
+        width: 60%;
+        text-align: right;
+        font: normal .9rem 'Calibri';
 
         & .entidade {
             display: inline-block;

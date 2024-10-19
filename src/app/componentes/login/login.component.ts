@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { Md5 } from 'ts-md5/dist/cjs/md5';
 import { Router } from '@angular/router';
+import { SessaoService } from '../../servicos/sessao.service';
 
 
 @Component({
@@ -13,8 +14,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   mensagem : string = "";
+  
+  entidade : string;
+  versao : string;
 
-  constructor ( private router : Router ){  }
+  constructor ( private router : Router, private sessao : SessaoService ){
+    this.entidade = this.sessao.entidade;
+    this.versao = this.sessao.versao;
+  }
 
   async login ( ) {
     this.mensagem = "";
@@ -35,6 +42,7 @@ export class LoginComponent {
 
         if(request.sucesso){
           this.router.navigate(['/']);
+          this.sessao.usuario = request.sucesso[0].nome;
           return
         }
 

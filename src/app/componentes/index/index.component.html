@@ -1,0 +1,35 @@
+<section class="componente-index">
+    <header>
+        <div class="titulo">
+            <span>Compras & Almoxarifado</span>
+        </div>
+        <div class="informacoes">
+            <button><img src="../../../assets/sair.svg" alt="imagem-sair.svg"><br>Sair</button>
+            <span class="entidade">{{entidade}}</span><br>
+            <span>Versão: {{versao}}</span><span> | Usuário: {{usuario}}</span>
+        </div>
+    </header>
+    <nav>
+        <button>Pesquisa:</button>
+
+        <button #nav1 value="cadastro" (click)="listDown(nav1)">Cadastro</button>
+        <div class="listDown" id="list-cadastro">
+            <a href="" [routerLink]="'/login'">Almoxarifados</a>
+            <a href="" >Categorias</a>
+            <a href="">Centro de Custos</a>
+            <a href="">Fornecedores</a>
+            <a href="">Locais</a>
+            <a href="">Produtos</a>
+            <a href="" [routerLink]="'/login'">Secretarias</a>
+        </div>
+
+        <button #nav2 value="compras" (click)="listDown(nav2)">Compras</button>
+        <div class="listDown" id="list-compras">
+            <a href="">Contratos</a>
+            <a href="">Pedidos</a>
+        </div>
+        <button>Almoxarifado</button>
+        <button>Relatórios</button>
+        <button>Ferramentas</button>
+    </nav>
+</section>
