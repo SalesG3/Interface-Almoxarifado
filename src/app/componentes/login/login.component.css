@@ -97,12 +97,27 @@ main {
             border: 1px solid cornflowerblue;
         }
 
+        & select {
+            width: 13.35rem;
+            height: 1.7rem;
+
+            font: normal 1rem 'Calibri';
+
+            outline: none;
+            border: 1px solid gray;
+            border-radius: 3px;
+        }
+
+        & select:focus {
+            border: 1px solid cornflowerblue;
+        }
+
         & button {
             display: flex;
             float: right;
             width: 6rem;
             height: 2rem;
-            margin: 1rem 4rem 0rem 0rem;
+            margin: 1rem 4.15rem 0rem 0rem;
 
             align-items: center;
             font: normal 1rem 'Calibri';
@@ -121,6 +136,13 @@ main {
         & button:hover {
             cursor: pointer;
             filter: brightness(.9);
+        }
+
+        & .mensagem {
+            font: normal .9rem 'Calibri';
+            color: red;
+            display: inline-block;
+            margin-top: 1rem;
         }
     }
 }

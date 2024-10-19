@@ -20,17 +20,18 @@
                 <input type="text" id="usuario">
                 <br>
                 <label for="senha">Senha:</label>
-                <input type="text" id="senha">
+                <input type="password" id="senha">
                 <br>
                 <label for="exercicio">Exercício:</label>
-                <input type="text" id="exercicio" list="exercicioData"><br>
-                <datalist id="exercicioData">
+                <select name="" id="exercicio">
+                    <option value="" hidden></option>
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
-                </datalist>
+                    <option value="2025">2025</option>
+                </select><br><br>
 
-                <button><img src="../../../assets/check.svg" alt="imagem-check.svg">Login</button>
-                
+                <button (click)="login()"><img src="../../../assets/check.svg" alt="imagem-check.svg">Login</button>
+                <span class="mensagem">{{mensagem}}</span>
             </div>
         </div>
     </main>
