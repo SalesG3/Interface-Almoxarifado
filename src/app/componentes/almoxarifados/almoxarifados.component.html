@@ -1,0 +1,61 @@
+<section class="componente">
+    <div class="titulo-componente">
+        <span>Almoxarifados:</span>
+    </div>
+    <div class="ferramentas">
+        <div class="operadores" hidden>
+            <button>Salvar +</button>
+            <button>Salvar</button>
+            <button>Cancelar</button>
+            <button>Voltar</button>
+        </div>
+        <div class="crud">
+            <button (click)="mudarTela()"><img src="../../../assets/incluir.svg" alt="imagem-incluir.svg">Incluir</button>
+            <button><img src="../../../assets/alterar.svg" alt="imagem-alterar.svg">Alterar</button>
+            <button><img src="../../../assets/consultar.svg" alt="imagem-consultar.svg">Consultar</button>
+            <button><img src="../../../assets/excluir.svg" alt="imagem-excluir.svg">Excluir</button>
+            <button><img src="../../../assets/copiar.svg" alt="imagem-copiar.svg">Copiar</button>
+            <button class="fechar"><img src="../../../assets/fechar.svg" alt="imagem-fechar.svg">Fechar</button>
+        </div>
+    </div>
+    <div class="corpo-componente">
+        <div class="grid-componente">
+            <div class="grid-pesquisar">
+                <img src="../../../assets/pesquisa.svg" alt="imagem-pesquisa.svg">
+                <input type="text" id="pesquisa">
+                <button>Procurar</button>
+                <span> | </span>
+                <button>Filtrar</button>
+            </div>
+            <table class="grid-tabela">
+                <thead>
+                    <tr>
+                        <th class="codigo">Código:</th>
+                        <th class="almoxarifado">Almoxarifado:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="codigo">teste</td>
+                        <td class="almoxarifado">teste</td>
+                    </tr>
+                    <tr>
+                        <td class="codigo">teste</td>
+                        <td class="almoxarifado">teste</td>
+                    </tr>
+                    <tr>
+                        <td class="codigo">teste</td>
+                        <td class="almoxarifado">teste</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="dados-componente" hidden>
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo">
+            <label for="almoxarifado">Almoxarifado:</label>
+            <input type="text" id="Almoxarifado">
+        </div>
+    </div>
+</section>

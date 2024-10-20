@@ -51,18 +51,11 @@ header {
 main {
 
     & .componente {
-        width: 35rem;
+        width: 35rem !important;
+        height: auto !important;
+        left: 10% !important;
         position: absolute;
-        top: 15%;
-        left: 30%;
-
         box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.5);
-    }
-
-    & .titulo-componente {
-        background-color: lightgray;
-        font: bold 1rem 'Calibri';
-        padding: .2rem 0rem .2rem 1rem;
     }
     
     & img {

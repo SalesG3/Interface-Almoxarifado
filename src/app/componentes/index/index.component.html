@@ -6,16 +6,17 @@
         <div class="informacoes">
             <button><img src="../../../assets/sair.svg" alt="imagem-sair.svg"><br>Sair</button>
             <span class="entidade">{{entidade}}</span><br>
-            <span>Versão: {{versao}}</span><span> | Usuário: {{usuario}}</span>
+            <span>Usuário: {{usuario}} | Versão: {{versao}}</span>
         </div>
     </header>
     <nav>
-        <button>Pesquisa:</button>
+        <button><img src="../../../assets/pesquisa.svg" alt="imagem-pesquisa.svg"> Pesquisa:</button>
 
-        <button #nav1 value="cadastro" (click)="listDown(nav1)">Cadastro</button>
+        <button #nav1 value="cadastro" (click)="listDown(nav1)"><img src="../../../assets/cadastro.svg" alt="imagem-cadastro.svg">
+            Cadastro</button>
         <div class="listDown" id="list-cadastro">
-            <a href="" [routerLink]="'/login'">Almoxarifados</a>
-            <a href="" >Categorias</a>
+            <a href="" [routerLink]="'/almoxarifados'">Almoxarifados</a>
+            <a href="" [routerLink]="''">Categorias</a>
             <a href="">Centro de Custos</a>
             <a href="">Fornecedores</a>
             <a href="">Locais</a>
@@ -23,13 +24,17 @@
             <a href="" [routerLink]="'/login'">Secretarias</a>
         </div>
 
-        <button #nav2 value="compras" (click)="listDown(nav2)">Compras</button>
+        <button #nav2 value="compras" (click)="listDown(nav2)"><img src="../../../assets/compras.svg" alt="imagem-compras.svg">
+            Compras</button>
         <div class="listDown" id="list-compras">
             <a href="">Contratos</a>
             <a href="">Pedidos</a>
         </div>
-        <button>Almoxarifado</button>
-        <button>Relatórios</button>
-        <button>Ferramentas</button>
+        <button><img src="../../../assets/almoxarifado.svg" alt="imagem-almoxarifado.svg">Almoxarifado</button>
+        <button><img src="../../../assets/relatorios.svg" alt="imagem-relatorios.svg"> Relatórios</button>
+        <button><img src="../../../assets/ferramentas.svg" alt="imagem-ferramentas.svg">Ferramentas</button>
     </nav>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
 </section>
