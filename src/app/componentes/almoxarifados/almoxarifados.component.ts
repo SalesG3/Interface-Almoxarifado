@@ -9,11 +9,29 @@ import { Component } from '@angular/core';
 })
 export class AlmoxarifadosComponent {
 
-  mudarTela(){
+  mudarTela( modo : string){
+    let crud = document.querySelector('.crud') as HTMLElement;
+    let operadores = document.querySelector('.operadores') as HTMLElement;
+
     let grid = document.querySelector('.grid-componente') as HTMLElement;
     let dados = document.querySelector('.dados-componente') as HTMLElement;
+    
+    switch( modo ) {
+      case 'Incluindo':
+        crud.setAttribute('hidden','');
+        operadores.style.display = 'inline-block'
 
-    grid.toggleAttribute('hidden')
-    dados.toggleAttribute('hidden')
+        grid.setAttribute('hidden', '');
+        dados.removeAttribute('hidden');
+        break;
+
+      default:
+        crud.removeAttribute('hidden');
+        operadores.style.display = 'none'
+
+        grid.removeAttribute('hidden');
+        dados.setAttribute('hidden','');
+        break;
+    }
   }
 }

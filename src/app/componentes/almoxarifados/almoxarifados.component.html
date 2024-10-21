@@ -4,13 +4,13 @@
     </div>
     <div class="ferramentas">
         <div class="operadores" hidden>
-            <button>Salvar +</button>
-            <button>Salvar</button>
+            <button (click)="mudarTela('')">Voltar</button>
             <button>Cancelar</button>
-            <button>Voltar</button>
+            <button>Salvar</button>
+            <button>Salvar +</button>
         </div>
         <div class="crud">
-            <button (click)="mudarTela()"><img src="../../../assets/incluir.svg" alt="imagem-incluir.svg">Incluir</button>
+            <button (click)="mudarTela('Incluindo')"><img src="../../../assets/incluir.svg" alt="imagem-incluir.svg">Incluir</button>
             <button><img src="../../../assets/alterar.svg" alt="imagem-alterar.svg">Alterar</button>
             <button><img src="../../../assets/consultar.svg" alt="imagem-consultar.svg">Consultar</button>
             <button><img src="../../../assets/excluir.svg" alt="imagem-excluir.svg">Excluir</button>
@@ -52,10 +52,12 @@
             </table>
         </div>
         <div class="dados-componente" hidden>
-            <label for="codigo">Código:</label>
-            <input type="text" id="codigo">
-            <label for="almoxarifado">Almoxarifado:</label>
-            <input type="text" id="Almoxarifado">
+            <div class="dados">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo">
+                <label for="almoxarifado">Almoxarifado:</label>
+                <input type="text" id="almoxarifado">
+            </div>
         </div>
     </div>
 </section>

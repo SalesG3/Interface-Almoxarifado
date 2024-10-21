@@ -47,17 +47,18 @@ export class LoginComponent {
         }
 
         else if(request.erro){
-          this.mensagem = "Usuário e Senha incompatíveis!"
+          this.mensagem = "Usuário e Senha incompatíveis!";
           return
         }
 
         else {
-          this.mensagem = "Inconsistência interna! Entrar em contato com Suporte!"
+          this.mensagem = "Inconsistência interna! Entrar em contato com Suporte!";
+          return
         }
     }
 
     catch (erro) {
-      alert('Inconsistência Interna! Favor entrar em contato com Suporte.')
+      alert('Inconsistência Interna! Favor entrar em contato com Suporte.');
       console.error(erro);
     }
   }

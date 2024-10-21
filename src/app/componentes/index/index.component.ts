@@ -25,7 +25,7 @@ export class IndexComponent {
   listDown ( button : HTMLButtonElement ) {
 
     function listUp(event : MouseEvent){
-      if(!div.contains(event.target as HTMLElement) && event.target != button){
+      if(event.target != button){
         div.style.display = "none"
         document.removeEventListener('mousedown', listUp)
       }
