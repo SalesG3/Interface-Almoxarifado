@@ -171,4 +171,20 @@
 
         outline: none;
     }
+
+    & input:focus, textarea:focus {
+        border: 1px solid cornflowerblue;
+    }
+
+    & textarea {
+        margin: 0rem .5rem 0rem .5rem;
+        width: 97%;
+        font: normal 0.85rem 'Calibri';
+        height: 2.24rem;
+        padding-left: .25rem;
+        border: 1px solid gray;
+
+        outline: none;
+        resize: none;
+    }
 }

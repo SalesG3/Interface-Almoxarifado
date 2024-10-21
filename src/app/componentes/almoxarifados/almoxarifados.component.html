@@ -23,7 +23,7 @@
             <div class="grid-pesquisar">
                 <img src="../../../assets/pesquisa.svg" alt="imagem-pesquisa.svg">
                 <input type="text" id="pesquisa">
-                <button>Procurar</button>
+                <button (click)="pesquisar()">Procurar</button>
                 <span> | </span>
                 <button>Filtrar</button>
             </div>
@@ -54,9 +54,11 @@
         <div class="dados-componente" hidden>
             <div class="dados">
                 <label for="codigo">Código:</label>
-                <input type="text" id="codigo">
+                <input #cod type="text" id="codigo" (input)="mascaraCodigo(cod)">
                 <label for="almoxarifado">Almoxarifado:</label>
-                <input type="text" id="almoxarifado">
+                <input type="text" id="almoxarifado"><br>
+                <label for="descricao">Descrição:</label><br>
+                <textarea id="descricao"></textarea>
             </div>
         </div>
     </div>
