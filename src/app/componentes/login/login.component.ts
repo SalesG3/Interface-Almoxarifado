@@ -58,7 +58,7 @@ export class LoginComponent {
     }
 
     catch (erro) {
-      alert('Inconsistência Interna! Favor entrar em contato com Suporte.');
+      alert('Inconsistência Interna! Entrar em contato com Suporte.');
       console.error(erro);
     }
   }

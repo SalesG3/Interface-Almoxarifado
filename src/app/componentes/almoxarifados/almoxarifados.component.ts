@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-almoxarifados',
@@ -9,10 +10,15 @@ import { environment } from '../../../environments/environment.development';
   styleUrl: './almoxarifados.component.css'
 })
 export class AlmoxarifadosComponent {
+  mensagem : string = "";
+  modo : string = "";
+  id : string = "";
+  tbody : any;
 
-  // CRUD:
+  constructor( private sanitizer : DomSanitizer){ }
 
-  // Novo Registro:
+
+  // CRUD: Novo Registro
   async novoRegistro( ) {
 
     try {
@@ -21,7 +27,7 @@ export class AlmoxarifadosComponent {
         method: "POST",
         headers: {
           TOKEN: environment.TOKEN,
-          "Content-Type":"applcation/json",
+          "Content-Type":"application/json",
         },
         body: JSON.stringify({
           codigo: (document.querySelector('#codigo') as HTMLInputElement).value,
@@ -32,18 +38,29 @@ export class AlmoxarifadosComponent {
 
       if(request.sucesso){
         this.mudarTela('');
+        console.log(request)
+      }
+
+      else if (request.codigo){
+        this.mensagem = "Código já está sendo utilizado em outro registro!"
       }
 
 
     } catch (erro) {
-      alert('Inconsistência Interna! Favor entrar em contato com Suporte.');
+      alert('Inconsistência Interna! Entrar em contato com Suporte.');
       console.error(erro);
     }
   }
 
-  // OUTROS:
 
-  // Pesquisa: REVISAR APÓS EXISTIR LANÇAMENTOS PARA ENCORPOAR O TBODY
+  // CRUD: Consultar Registro
+  async consultarRegistro(){
+
+    
+
+  }
+
+  // CONSULTAS: Pesquisar
   async pesquisar ( ) {
 
     try {
@@ -56,27 +73,27 @@ export class AlmoxarifadosComponent {
         body: JSON.stringify({
           pesquisa: (document.querySelector('#pesquisa') as HTMLInputElement).value
         })
-      }).then(response => {if(response.ok){return response.json()} else{ console.log(response); return false}})
+      }).then(response => {if(response.ok){return response.json()} else{ console.log(response); return false}});
 
-        
+      let html : string = "";
+      for(let i = 0; i < request.length; i++){
+        html += `<tr id="${request[i].id_almoxarifado}">
+                    <td class="codigo">${request[i].codigo}</td>
+                    <td class="almoxarifado">${request[i].almoxarifado}</td>
+                  </tr>`
+      }
+      this.tbody = this.sanitizer.bypassSecurityTrustHtml(html);
+      document.querySelector('tbody')?.addEventListener('click', this.idRegistro)
+
   
     } catch (erro) {
-      alert('Inconsistência Interna! Favor entrar em contato com Suporte.');
+      alert('Inconsistência Interna! Entrar em contato com Suporte.');
       console.error(erro);
     }
   }
   
 
-  // Mascara Código:
-  mascaraCodigo( input : HTMLInputElement){
-
-    let formatado : string = "";
-    for(let i = 0; i < input.value.length; i++){
-      
-    }
-  }
-
-  // Código Automático:
+  // CONSULTAS: Código Automático:
   async autoCodigo(){
 
     try {
@@ -91,13 +108,64 @@ export class AlmoxarifadosComponent {
       (document.querySelector('#codigo') as HTMLInputElement).value = String(request[0].codigo).padStart(2, '0');
 
     } catch(erro) {
-      alert('Inconsistência Interna! Favor entrar em contato com Suporte.');
+      alert('Inconsistência Interna! Entrar em contato com Suporte.');
       console.error(erro);
     }
-
   }
 
-  // Alternar entre telas:
+
+  // OUTROS: Validação Inputs:
+  validarInputs( modo : string){
+    let inputs = ['#codigo', '#almoxarifado'];
+    for(let i = 0; i < inputs.length; i++){
+      if((document.querySelector(inputs[i]) as HTMLInputElement).value == ""){
+        document.querySelector(inputs[i])?.classList.add('obrigatorio');
+        this.mensagem = "Campos em vermelho são obrigatórios!"
+      }
+
+      else{
+        document.querySelector(inputs[i])?.classList.remove('obrigatorio');
+      }
+    }
+
+    for(let i = 0; i < inputs.length; i++){
+      if(document.querySelector(inputs[i])?.classList.contains('obrigatorio'))
+        { return false }
+    }
+
+    switch(modo){
+      case 'Incluindo':
+        this.novoRegistro();
+        this.mudarTela('');
+        break
+      
+      case 'Alterando':
+        break
+    }
+      return this.mensagem = "";
+  }
+
+  // OUTROS: Mascara Código:
+  mascaraCodigo( input : HTMLInputElement ){
+
+    let formatado : string = "";
+    for( let i = 0; i < input.value.length; i++ ){
+
+      if( i == 2 && input.value[0] == '0' ){
+        formatado = formatado.replace('0','');
+        formatado += input.value[i];
+      }
+
+      else if ( i < 2 ){
+        formatado += input.value[i]
+      }
+    }
+
+    input.value = formatado.padStart(2,'0');
+  }
+
+
+  // OUTROS: Alternar entre telas:
   mudarTela( modo : string){
     let crud = document.querySelector('.crud') as HTMLElement;
     let operadores = document.querySelector('.operadores') as HTMLElement;
@@ -108,20 +176,49 @@ export class AlmoxarifadosComponent {
     switch( modo ) {
       case 'Incluindo':
         this.autoCodigo();
-        crud.setAttribute('hidden','');
+        this.modo = modo;
+
+        crud.style.display = 'none'
         operadores.style.display = 'inline-block'
 
         grid.setAttribute('hidden', '');
         dados.removeAttribute('hidden');
+
+        (document.querySelector('.fechar') as HTMLElement).style.display = 'none'
         break;
 
       default:
-        crud.removeAttribute('hidden');
+        let inputs = document.querySelectorAll(' .dados-componente input, textarea');
+        for(let i = 0; i < inputs.length; i++){
+          (inputs[i] as HTMLInputElement).value = "";
+          (inputs[i] as HTMLInputElement).classList.remove('obrigatorio')
+        }
+
+        crud.style.display = 'inline-block'
         operadores.style.display = 'none'
 
         grid.removeAttribute('hidden');
         dados.setAttribute('hidden','');
+        this.mensagem = "";
         break;
     }
+  }
+
+  
+  // OUTROS: ID do Registro
+  idRegistro(event : MouseEvent){
+    let trs = document.querySelectorAll('tbody tr');
+
+    for(let i = 0; i < trs.length; i++){
+      (trs[i] as HTMLElement).classList.remove('focus');
+
+      if(trs[i] == (event.target as HTMLElement).parentElement){
+        trs[i].classList.add('focus');
+        this.id = (trs[i] as HTMLElement).id;
+      }
+    }
+    return this.id
+    // AO CONSOLAR FORA NÃO TRAZ O VALOR QUE FOI ATRIBUIDO DENTRO DA FUNÇÃO;
+    // MOTIVO PROVAVEL: ADDEVENTLINISTER;
   }
 }

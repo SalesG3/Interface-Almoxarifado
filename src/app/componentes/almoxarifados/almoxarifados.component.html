@@ -4,15 +4,16 @@
     </div>
     <div class="ferramentas">
         <div class="operadores" hidden>
-            <button (click)="mudarTela('')">Voltar</button>
-            <button>Cancelar</button>
-            <button>Salvar</button>
-            <button>Salvar +</button>
+            <button class="fechar" (click)="mudarTela('')"> <img src="../../../assets/voltar.svg" alt="imagem-voltar.svg">Voltar</button>
+            <button (click)="mudarTela('')"><img src="../../../assets/fechar.svg" alt="imagem-fechar.svg">Cancelar</button>
+            <button (click)="validarInputs(this.modo)"><img src="../../../assets/salvar+.svg" alt="imagem-salvar.svg">Salvar</button>
+            <button><img src="../../../assets/salvar+.svg" alt="imagem-salvar.svg">Salvar +</button>
+            <span>Método: <br> {{modo}}</span>
         </div>
         <div class="crud">
             <button (click)="mudarTela('Incluindo')"><img src="../../../assets/incluir.svg" alt="imagem-incluir.svg">Incluir</button>
             <button><img src="../../../assets/alterar.svg" alt="imagem-alterar.svg">Alterar</button>
-            <button><img src="../../../assets/consultar.svg" alt="imagem-consultar.svg">Consultar</button>
+            <button (click)="consultarRegistro()"><img src="../../../assets/consultar.svg" alt="imagem-consultar.svg">Consultar</button>
             <button><img src="../../../assets/excluir.svg" alt="imagem-excluir.svg">Excluir</button>
             <button><img src="../../../assets/copiar.svg" alt="imagem-copiar.svg">Copiar</button>
             <button class="fechar"><img src="../../../assets/fechar.svg" alt="imagem-fechar.svg">Fechar</button>
@@ -34,21 +35,7 @@
                         <th class="almoxarifado">Almoxarifado:</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="codigo">teste</td>
-                        <td class="almoxarifado">teste</td>
-                    </tr>
-                    <tr>
-                        <td class="codigo">teste</td>
-                        <td class="almoxarifado">teste</td>
-                    </tr>
-                    <tr>
-                        <td class="codigo">teste</td>
-                        <td class="almoxarifado">teste</td>
-                    </tr>
-
-                </tbody>
+                <tbody [innerHTML]="tbody"></tbody>
             </table>
         </div>
         <div class="dados-componente" hidden>
@@ -59,6 +46,8 @@
                 <input type="text" id="almoxarifado"><br>
                 <label for="descricao">Descrição:</label><br>
                 <textarea id="descricao"></textarea>
+                <br><br>
+                <span class="mensagem">{{mensagem}}</span>
             </div>
         </div>
     </div>

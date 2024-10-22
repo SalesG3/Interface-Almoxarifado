@@ -1,3 +1,5 @@
+* { user-select: none;}
+
 .componente {
     position: absolute;
     width: 50rem;
@@ -31,7 +33,7 @@
     & button {
         width: 4rem;
         height: 3rem;
-        margin: .5rem 0rem 0rem .5rem;
+        margin: .5rem 0rem 0rem 0rem;
 
         font: normal .8rem 'Calibri';
         color: rgba(0, 0, 0, 0.75);
@@ -53,13 +55,37 @@
         
         & button {
             float: right;
+            margin-right: .5rem;
+        }
+
+        & span {
+            float: right;
+            font: bold .9rem 'Calibri';
+            margin: .5rem;
+        }
+
+        .fechar {
+            float: right;
+            margin-right: .5rem;
         }
     }
 
-    .fechar {
-        float: right;
-        margin-right: .5rem;
+    .crud {
+        display: inline-block;
+        width: 100%;
+
+        & button {
+            float: left;
+            margin-left: .5rem;
+        }
+
+        .fechar {
+            float: right;
+            margin-right: .5rem;
+        }
     }
+
+    
 }
 
 .grid-pesquisar {
@@ -112,7 +138,6 @@
     display: inline-block;
     border-collapse: collapse;
 
-
     & thead {
         display: block;
 
@@ -128,8 +153,10 @@
         height: 17.5rem;
 
         font: normal 0.85rem 'Calibri';
-        background-color: #ECECEC;
+        text-align: left;
+        
         overflow-y: scroll;
+        background-color: #ECECEC;
     }
 
     & th, td {
@@ -187,4 +214,16 @@
         outline: none;
         resize: none;
     }
+
+    & .mensagem {
+        font: normal .9rem 'Calibri';
+        color: red;
+        display: inline-block;
+        margin-left: .5rem;
+    }
 }
+
+.obrigatorio {
+    border: 1px solid red !important;
+}
+
