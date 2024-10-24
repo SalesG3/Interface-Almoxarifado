@@ -6,14 +6,14 @@
         <div class="operadores" hidden>
             <button class="fechar" (click)="mudarTela('')"> <img src="../../../assets/voltar.svg" alt="imagem-voltar.svg">Voltar</button>
             <button (click)="mudarTela('')"><img src="../../../assets/fechar.svg" alt="imagem-fechar.svg">Cancelar</button>
-            <button (click)="validarInputs(this.modo)"><img src="../../../assets/salvar+.svg" alt="imagem-salvar.svg">Salvar</button>
+            <button (click)="salvarRegistro()"><img src="../../../assets/salvar+.svg" alt="imagem-salvar.svg">Salvar</button>
             <button><img src="../../../assets/salvar+.svg" alt="imagem-salvar.svg">Salvar +</button>
             <span>Método: <br> {{modo}}</span>
         </div>
         <div class="crud">
             <button (click)="mudarTela('Incluindo')"><img src="../../../assets/incluir.svg" alt="imagem-incluir.svg">Incluir</button>
-            <button><img src="../../../assets/alterar.svg" alt="imagem-alterar.svg">Alterar</button>
-            <button (click)="consultarRegistro()"><img src="../../../assets/consultar.svg" alt="imagem-consultar.svg">Consultar</button>
+            <button (click)="mudarTela('Alterando')"><img src="../../../assets/alterar.svg" alt="imagem-alterar.svg">Alterar</button>
+            <button (click)="mudarTela('Consultando')"><img src="../../../assets/consultar.svg" alt="imagem-consultar.svg">Consultar</button>
             <button><img src="../../../assets/excluir.svg" alt="imagem-excluir.svg">Excluir</button>
             <button><img src="../../../assets/copiar.svg" alt="imagem-copiar.svg">Copiar</button>
             <button class="fechar"><img src="../../../assets/fechar.svg" alt="imagem-fechar.svg">Fechar</button>
@@ -24,7 +24,7 @@
             <div class="grid-pesquisar">
                 <img src="../../../assets/pesquisa.svg" alt="imagem-pesquisa.svg">
                 <input type="text" id="pesquisa">
-                <button (click)="pesquisar()">Procurar</button>
+                <button (click)="pesquisarGRID()">Procurar</button>
                 <span> | </span>
                 <button>Filtrar</button>
             </div>
@@ -41,7 +41,7 @@
         <div class="dados-componente" hidden>
             <div class="dados">
                 <label for="codigo">Código:</label>
-                <input #cod type="text" id="codigo" (input)="mascaraCodigo(cod)">
+                <input #cod maxlength="2" type="number" id="codigo" (input)="mascaraCodigo(cod)">
                 <label for="almoxarifado">Almoxarifado:</label>
                 <input type="text" id="almoxarifado"><br>
                 <label for="descricao">Descrição:</label><br>
